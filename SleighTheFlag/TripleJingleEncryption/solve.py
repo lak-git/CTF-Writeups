@@ -1,12 +1,5 @@
 # Håstad Broadcast Attack for e=3 (standalone version)
 
-# If sympy is installed, use it for integer cube root
-try:
-    from sympy import integer_nthroot
-    use_sympy = True
-except ImportError:
-    use_sympy = False
-
 # Convert hex → int
 def hx(x):
     return int(x, 16)
@@ -35,24 +28,21 @@ def crt(vals, mods):
 
 m3 = crt([c1, c2, c3], [n1, n2, n3])
 
-# Cube root
-if use_sympy:
-    m, exact = integer_nthroot(m3, 3)
-else:
-    # manual integer cube root
-    def iroot3(n):
-        lo, hi = 0, int(pow(n, 1/3)) + 2
-        while lo <= hi:
-            mid = (lo + hi) // 2
-            cube = mid * mid * mid
-            if cube == n:
-                return mid, True
-            if cube < n:
-                lo = mid + 1
-            else:
-                hi = mid - 1
-        return hi, False
-    m, exact = iroot3(m3)
+
+# manual integer cube root
+def iroot3(n):
+    lo, hi = 0, int(pow(n, 1/3)) + 2
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        cube = mid * mid * mid
+        if cube == n:
+            return mid, True
+        if cube < n:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return hi, False
+m, exact = iroot3(m3)
 
 # Convert integer → bytes
 def int_to_bytes(n):
