@@ -1,0 +1,4 @@
+881941ea24e92f4bd4d69d79e27ce1d2b10094172cb3cc93b223daf70ef2d867
+https://www.virustotal.com/gui/file/881941ea24e92f4bd4d69d79e27ce1d2b10094172cb3cc93b223daf70ef2d867
+Malware Bazaar https://bazaar.abuse.ch/browse/
+hexdump -C malware.exe > hexdump.txt

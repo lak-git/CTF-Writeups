@@ -1,0 +1,24 @@
+=== SecureCorp System Logs ===
+Date: 2025-11-15
+
+03:39:15 [INFO] Process started: ransomware.py (PID: 15847)
+03:39:15 [WARNING] Unusual file access pattern detected
+03:39:16 [ALERT] Multiple files modified in /home/user/documents
+03:39:17 [CRITICAL] Potential ransomware activity detected
+03:39:18 [INFO] Process terminated: ransomware.py (PID: 15847)
+
+System Information:
+- Timestamp: 2025-11-15 03:39:15 UTC
+- Unix Timestamp: 1731644355
+- Process ID: 15847
+- User: admin
+- Working Directory: /opt/ransomware_sim
+
+File Modifications:
+03:39:16 - document.txt → document.txt.enc
+03:39:16 - flag.txt → flag.txt.enc
+03:39:17 - data.txt → data.txt.enc
+
+Note: Process IDs on this system are assigned sequentially
+and are typically in the range 1000-32768. The ransomware
+process had PID 15847.
