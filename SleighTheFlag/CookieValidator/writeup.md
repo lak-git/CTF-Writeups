@@ -1,5 +1,7 @@
 # Cookie Validator
 
+## Solution
+
 - Start by going to the IP address given by the challenge
 
 - Press F12 or go into Inspect Mode and click on the Network tab and refresh the page. Make sure to have selected All.

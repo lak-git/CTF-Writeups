@@ -1,5 +1,7 @@
 # Triple Jingle Encryption
 
+## Solution
+
 - Netcat into the given ip
 
 ```nc
