@@ -14,5 +14,5 @@ This was my first CTF only a few solves and some missing, but it's a starting po
 - [✓ Rush (Full-pwn)](Rush/writeup.md)
 - [Say Sleigh](SaySleigh/challenge.md)
 - [✓ Triple Jingle Encryption](TripleJingleEncryption/writeup.md)
-- [Warmup Challenge 1](Warmup-1/challenge.md)
+- [✓ Warmup Challenge 1](Warmup-1/writeup.md)
 - [Warmup Challenge 3](Warmup-3/challenge.md)

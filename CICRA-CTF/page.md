@@ -6,7 +6,7 @@ Second CTF, as part of GHOST-X team. Came up on 7th place. This time more solved
 
 ## Table of Contents
 
-- [Allegory of Hues](AllegoryOfHues/challange.md)
+- [Allegory of Hues](AllegoryOfHues/challenge.md)
 - [✓ Byte Offset](ByteOffset/writeup.md)
 - [Chameleon](Chameleon/challenge.md)
 - [Corrupted Artifact](CorruptedAtrifact/challenge.md)
