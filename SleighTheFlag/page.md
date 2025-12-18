@@ -10,7 +10,7 @@ This was my first CTF only a few solves and some missing, but it's a starting po
 - [Candy Vault Heist](CandyVaultHeist/challenge.md)
 - [✓ Cookie Validator](CookieValidator/writeup.md)
 - [Dr Strand's Secret](DrStrandsSecret/challenge.md)
-- [Mistle Tag](MistleTag/challenge.md)
+- [✓ Mistle Tag](MistleTag/writeup.md)
 - [✓ Rush (Full-pwn)](Rush/writeup.md)
 - [Say Sleigh](SaySleigh/challenge.md)
 - [✓ Triple Jingle Encryption](TripleJingleEncryption/writeup.md)
