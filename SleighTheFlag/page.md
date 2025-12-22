@@ -4,7 +4,7 @@ This was my first CTF only a few solves and some missing, but it's a starting po
 
 ---
 
-## Table of Contents
+## Challenges
 
 - [✓ Abhiman 1 & 2](Abhiman/writeup.md)
 - [Candy Vault Heist](CandyVaultHeist/challenge.md)

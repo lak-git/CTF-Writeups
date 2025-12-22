@@ -6,8 +6,8 @@ This is a collection of Capture the Flag (CTF) writeups that I've solved as well
 
 ---
 
-## Table of Contents
+## CTF Events
 
 - [Sleigh The Flag (2025)](SleighTheFlag/page.md)
 - [CICRA 2nd Annual CTF Challenge - HashX (2025)](CICRA-CTF/page.md)
-<!-- - [Null CTF (2025)] (NullCTF/page.md) -->
+
