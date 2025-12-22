@@ -10,4 +10,4 @@ This is a collection of Capture the Flag (CTF) writeups that I've solved as well
 
 - [Sleigh The Flag (2025)](SleighTheFlag/page.md)
 - [CICRA 2nd Annual CTF Challenge - HashX (2025)](CICRA-CTF/page.md)
-
+- [Aftermath (2025)](Aftermath/page.md)

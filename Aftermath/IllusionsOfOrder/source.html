@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>totally normal page</title>
+
+  <!--
+    TODO: remove debug before prod
+    FLAG? nope -> CTF{this_is_a_decoy_flag}
+    also: don't trust comments :)
+  -->
+
+  <style>
+    /* chaos css */
+    html,body{margin:0;padding:0;height:100%;}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:#0b0f14; color:#cfe7ff;}
+    .wrap{display:flex;min-height:100%;align-items:center;justify-content:center;flex-direction:column;padding:20px;}
+    .card{width:min(860px,92vw);background:#0f1722;border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.45);padding:18px;position:relative;overflow:hidden;}
+    .noise{position:absolute;inset:-30px;opacity:.08;pointer-events:none;mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");}
+    h1{margin:.2rem 0 0.6rem;font-size:1.2rem;letter-spacing:.08em;text-transform:uppercase;}
+    .row{display:flex;gap:12px;flex-wrap:wrap;}
+    .box{flex:1;min-width:230px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.12);
+      border-radius:12px;padding:12px}
+    code{color:#a8ffcb}
+    .tiny{opacity:.7;font-size:.85rem}
+    .btn{appearance:none;border:1px solid rgba(255,255,255,.15);background:#132033;color:#cfe7ff;
+      border-radius:12px;padding:10px 12px;cursor:pointer}
+    .btn:hover{background:#152840}
+  </style>
+
+  <!--[if lt IE 9]>
+    <p>upgrade pls</p>
+  <![endif]-->
+
+  <!--
+    DEV NOTE: if someone asks, the "flag is in comments"
+    but that doesn't mean *this* comment.
+
+    fragment stash (ignore): Q1RGew==
+    (that's just base64 for "CTF{" ... or is it? 😈)
+  -->
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card" id="card">
+      <div class="noise"></div>
+
+      <h1>Welcome to the most normal page on the internet</h1>
+      <p class="tiny">
+        Nothing hidden here. Definitely no secrets. Absolutely no reason to inspect anything.
+      </p>
+
+      <div class="row">
+        <div class="box">
+          <strong>Status</strong>
+          <div id="status">OK</div>
+          <div class="tiny">Last check: <span id="t">never</span></div>
+        </div>
+
+        <div class="box">
+          <strong>Notes</strong>
+          <ul class="tiny">
+            <li>Make code messy ✅</li>
+            <li>Add fake trails ✅</li>
+            <li>Hide flag inside comments ✅</li>
+            <li>Profit ❓</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <strong>Quick actions</strong><br>
+          <button class="btn" id="ping">Ping</button>
+          <button class="btn" id="scramble">Scramble UI</button>
+          <div class="tiny" id="log"></div>
+        </div>
+      </div>
+
+      <!--
+        🧱 Real flag is split across multiple HTML comments.
+        You'll need to find and reassemble parts in the right order.
+
+        part(1/6): AFTERMATH{
+      -->
+
+      <div style="height:10px"></div>
+
+      <!-- decoy that looks legit -->
+      <!-- FLAG: CTF{why_are_you_reading_this_comment} -->
+
+      <div class="row">
+        <div class="box">
+          <strong>Widget A</strong>
+          <p class="tiny">
+            “Security through obscurity” is a lifestyle.<br>
+            Try not to overthink it.
+          </p>
+
+          <!-- part(2/6): m355y_ -->
+        </div>
+
+        <div class="box">
+          <strong>Widget B</strong>
+          <p class="tiny">
+            Did you know HTML comments can appear basically anywhere?
+          </p>
+
+          <!--
+            random lorem:
+            <!-- nested comments don't actually nest in HTML, but people still try -->
+            part(3/6): c0mm3n7_
+          -->
+        </div>
+
+        <div class="box">
+          <strong>Widget C</strong>
+          <p class="tiny">
+            Some devs leave notes everywhere. Some devs leave… other things.
+          </p>
+
+          <!-- part(4/6): h1d1n9_ -->
+        </div>
+      </div>
+
+      <div style="height:10px"></div>
+
+      <div class="box">
+        <strong>Footer-ish area</strong>
+        <p class="tiny">Nothing to see here either.</p>
+
+        <!--
+          decoy fragments:
+          part(X): _nope_
+          part(Y): CTF{not_the_one}
+        -->
+
+        <!-- part(5/6): 1n_pl41n_ -->
+      </div>
+
+      <!--
+        One more decoy, because why not:
+        CTF{m3ssy_comment_hiding_in_plain_sight_but_fake}
+      -->
+
+      <!-- part(6/6): 51gh7} -->
+
+    </div>
+
+    <!-- more junk -->
+    <!-- build: 2020.13.99 -->
+    <!-- author: someone -->
+    <!-- note: remove console logs later -->
+
+  </div>
+
+  <script>
+    // intentionally messy script, not needed to solve, just noise
+    (function(){
+      const $ = (s)=>document.querySelector(s);
+      const log=$("#log"), t=$("#t"), st=$("#status");
+      const rnd=(n)=>Math.floor(Math.random()*n);
+      const msgs=[
+        "pong?","ping?","plz no","ok","still ok","definitely fine","100% normal",
+        "do not inspect element","trust me bro"
+      ];
+      function now(){
+        const d=new Date();
+        return d.toLocaleTimeString();
+      }
+      $("#ping").addEventListener("click",()=>{
+        st.textContent="OK"+".".repeat(rnd(4));
+        t.textContent=now();
+        log.textContent=msgs[rnd(msgs.length)];
+        // fake "flag" in JS comment, not HTML comment (ignore)
+        // CTF{js_comment_decoy}
+      });
+      $("#scramble").addEventListener("click",()=>{
+        const card=$("#card");
+        card.style.transform=`rotate(${(rnd(9)-4)}deg)`;
+        card.style.filter=`hue-rotate(${rnd(360)}deg) saturate(${80+rnd(80)}%)`;
+        log.textContent="scrambled";
+        setTimeout(()=>{card.style.transform="";card.style.filter="";},500);
+      });
+    })();
+  </script>
+</body>
+</html>

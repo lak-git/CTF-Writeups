@@ -1,0 +1,23 @@
+* Tools needed: base64, binwalk, zip2john, john
+
+1) Download the file and analyze it. The characters seem oddly familiar to some code of an encoding. It is unusual for large files to be encoded so it could also be an image. This is also evidenced by the header. Run the following command to attempt to decode it. for rapid identification and AI tool can help with it.
+
+```sh
+base64 -d <file.txt> > mystery.jpg
+```
+
+2) After running some stegtools it didn't reveal much so let's try binwalk to see if there's any hidden files
+```sh
+binwalk -e mystery.jpg
+```
+<fragmentsofimage1.png>
+
+3) Indeed there is a zip file. Attempting to open it shows that it is password protected. We can solve that by using john the ripper. First convert it to a hash and run a bruteforce to reveal the password.
+```sh
+zip2john 260D.zip > hash.txt
+john hash.txt <wordlist>
+```
+
+4) The password is revealed as ```welcome123```. Unzip the contents and you'll be presented with two text files.
+5) Reveal the contents of ```hidden.txt``` from my past experience, it appears to be brainfuck code. Copy the contents and paste it into an online brainfuck interpreter, ```copy.sh/brainfuck```
+<fragmentsofimage2.png>
