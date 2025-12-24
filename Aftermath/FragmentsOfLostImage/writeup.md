@@ -33,6 +33,8 @@ john hash.txt /usr/share/wordlists/rockyou.txt
 
 ![Screenshot](fragmentsoflostimage2.PNG)
 
+---
+
 ## Credit
 
 [Mavinda Rodrigo](https://www.linkedin.com/in/mavinda-rodrigo/) for solving most of the challenge, up until extracting the zip file from the image.
