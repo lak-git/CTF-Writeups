@@ -6,9 +6,14 @@ Our team, **Solomon's Hand** achieved **2nd place** solving 15 out of 16 challen
 
 ## Challenges
 
+- [✓ Admin's Lazy Day](AdminsLazyDay/writeup.md)
 - [✓ All You Can Buffer Overflow](AllYouCanOverflow/writeup.md)
+- [✓ Deep Packet Secrets](DeepPacketSecrets/writeup.md)
+- [✓ Foreign Execution](ForeignExecution/writeup.md)
 - [✓ Fragments Of a Lost Image](FragmentsOfLostImage/writeup.md)
 - [✓ Illusions Of Order](IllusionsOfOrder/writeup.md)
+- [✓ Key In The Shadows](KeyInTheShadows/writeup.md)
 - [✓ Layers Cake Of Secrets](LayersCakeOfSecrets/writeup.md)
 - [✓ Nothing To See Here](NothingToSeeHere/writeup.md)
 - [✓ When Browser Decides Who You Are](WhenBrowserDecidesWhoYouAre/writeup.md)
+- [✓ Whispers In The Stream](WhispersInTheStream/writeup.md)
