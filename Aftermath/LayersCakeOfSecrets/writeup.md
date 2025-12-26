@@ -17,6 +17,18 @@ Can you slice through the deception and recover Chef Cipherâ€™s secret recipe? ð
 
 ---
 
+## Solution
+
+- For this challenge the site has give us a key which is ```1337``` and a base4 string, ```REBWRV9SXlILUFtSVx9DVkJARFhDVwlEUEZQUlxWWkRFVkE=```.
+
+- Based on the assumption this is a XOR key we can use to decode the base64 string we enter it into a decoder.
+
+![Screenshot](layerofcakes3.jpg)
+
+- Then we can enter the credentials and get the flag.
+
+---
+
 ## Alternative Solution
 
 - Since the site blocks dev tools and right click, we can try bypassing this with an external site to view the source code like ```https://www.view-page-source.com/```
@@ -105,3 +117,9 @@ function checkLogin() {
 - Submitting it to the site itself, we can see it works.
 
 ![Screenshot](layerofcakes2.PNG)
+
+---
+
+## Credit
+
+[Stefan Shabbir](https://www.linkedin.com/in/stefan-shabbir/) for providing the main solution.
