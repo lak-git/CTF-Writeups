@@ -4,7 +4,7 @@ import gzip
 
 
 def final_solve():
-    packets = scapy.rdpcap("name.pcap")
+    packets = scapy.rdpcap("1760030173_final_hard_challenge.pcap")
     xor_key = 0xC0
     chunks = { }
 

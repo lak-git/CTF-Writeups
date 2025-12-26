@@ -12,6 +12,7 @@ Our team, **Solomon's Hand** achieved **2nd place** solving 15 out of 16 challen
 - [✓ Echoes After The Aftermath](EchoesAfterTheAftermath/writeup.md)
 - [✓ Foreign Execution](ForeignExecution/writeup.md)
 - [✓ Fragments Of a Lost Image](FragmentsOfLostImage/writeup.md)
+- [Frame By Frame, Colour By Colour](FrameByFrameColourByColour/challenge.md)
 - [✓ Illusions Of Order](IllusionsOfOrder/writeup.md)
 - [✓ Key In The Shadows](KeyInTheShadows/writeup.md)
 - [✓ Layers Cake Of Secrets](LayersCakeOfSecrets/writeup.md)
