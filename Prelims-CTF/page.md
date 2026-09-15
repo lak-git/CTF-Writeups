@@ -5,7 +5,7 @@ Preliminary CTF qualifier for APIIT's upcoming Inter-University CTF, my teammate
 ---
 
 <p align="center">
-  <img src="SolomonsHand.png" alt="Mobile Task Force Delta-3 'Solomon's Hand'" width="auto">
+  <img src="SolomonsHand.png" alt="Mobile Task Force Delta-3 'Solomon's Hand'" width="500" height="auto">
 </p>
 
 ---

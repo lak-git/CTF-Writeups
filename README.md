@@ -12,3 +12,4 @@ This is a collection of Capture the Flag (CTF) writeups that I've solved as well
 - [CICRA 2nd Annual CTF Challenge - HashX (2025)](CICRA-CTF/page.md)
 - [Aftermath (2025)](Aftermath/page.md)
 - [Prelims (2026)](Prelims-CTF/page.md)
+- [Lernaean Siege (2026)](LernaeanSiege/page.md)
