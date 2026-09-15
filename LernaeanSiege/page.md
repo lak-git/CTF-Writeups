@@ -5,7 +5,7 @@ The big one, and my first KoTH style event. *Special Asset Agent - Thunder's Fis
 ---
 
 <p align="center">
-  <img src="SolomonsHand.png" alt="Mobile Task Force Delta-3 'Solomon's Hand'" width="500" height="auto">
+  <img src="../Prelims-CTF/SolomonsHand.png" alt="Mobile Task Force Delta-3 'Solomon's Hand'" width="500" height="auto">
 </p>
 
 ---
